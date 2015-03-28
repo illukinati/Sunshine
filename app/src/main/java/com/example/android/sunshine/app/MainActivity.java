@@ -1,7 +1,6 @@
 package com.example.android.sunshine.app;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,10 +57,10 @@ public class MainActivity extends ActionBarActivity {
      */
     public static class PlaceholderFragment extends Fragment {
 
+        ArrayAdapter<String> mForecastAdapter;
 
         public PlaceholderFragment() {
         }
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -77,6 +77,16 @@ public class MainActivity extends ActionBarActivity {
             };
 
             List<String> dataForecast = new ArrayList<String>(Arrays.asList(data));
+
+            mForecastAdapter = new ArrayAdapter<String>(
+                    getActivity(), // The current context (this Activity)
+                    R.layout.list_item_forecast, // the name of the layout ID
+                    R.id.list_item_forecast_textview, // the ID of text view
+                    dataForecast
+            );
+
+            ListView listview = (ListView) rootView.findViewById(R.id.list_item_forecast);
+            listview.setAdapter(mForecastAdapter);
             return rootView;
         }
     }
