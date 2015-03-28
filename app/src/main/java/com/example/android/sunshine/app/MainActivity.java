@@ -11,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -53,6 +57,7 @@ public class MainActivity extends ActionBarActivity {
      */
     public static class PlaceholderFragment extends Fragment {
 
+
         public PlaceholderFragment() {
         }
 
@@ -60,6 +65,18 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            String[] data = {
+                    "Mon - 6/20 - Sunny - 31/17",
+                    "Tue - 6/21 - Rainy - 21/8",
+                    "Wed - 6/22 - Foggy - 22/9",
+                    "Thu - 6/23 - Cloudy - 44/8",
+                    "Fri - 6/24 - Windy - 25/9",
+                    "Sat - 6/25 - Snowy - 12/1",
+                    "Sun - 6/26 - Sunny - 90/9",
+            };
+
+            List<String> dataForecast = new ArrayList<String>(Arrays.asList(data));
             return rootView;
         }
     }
